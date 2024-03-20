@@ -59,7 +59,7 @@ class MTM_Builder {
 		<?php
 	}
 
-	public static function output_field( $i = '', $tag, $args = array() ){
+	public static function output_field( $i, $tag, $args = array() ){
 		if( !empty($args['context']) && empty($args['context-placeholder']) ) $args['context-placeholder'] = esc_html__('choose contexts, leave blank for all pages', 'meta-tag-manager');
 		?>
 		<div class="mtm-field">

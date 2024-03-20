@@ -1,8 +1,7 @@
 
 <div id="postbox-container-1" class="postbox-container">
 	<div id="mtm-plugin-info" class="postbox ">
-		<button type="button" class="handlediv button-link"
-		        aria-expanded="true">
+		<button type="button" class="handlediv button-link" aria-expanded="true">
 			<span class="screen-reader-text"><?php echo sprintf(esc_html__('Toggle panel: %s'), esc_html__('About This Plugin','meta-tag-manager')); ?></span>
 			<span class="toggle-indicator" aria-hidden="true"></span>
 		</button>
@@ -24,8 +23,7 @@
 		</div>
 	</div>
 	<div id="mtm-plugin-support" class="postbox ">
-		<button type="button" class="handlediv button-link"
-		        aria-expanded="true">
+		<button type="button" class="handlediv button-link" aria-expanded="true">
 			<span class="screen-reader-text"><?php echo sprintf(esc_html__('Toggle panel: %s'), esc_html__('Need Help?','meta-tag-manager')); ?></span>
 			<span class="toggle-indicator" aria-hidden="true"></span>
 		</button>

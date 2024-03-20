@@ -751,4 +751,167 @@ table.features tr td:not(:first-child) {
   background-color: #fafafa;
 }
 /*# sourceMappingURL=selectize.css.map */
+.mtm-modal-overlay {
+  display: none;
+}
+.mtm-modal-overlay.active {
+  display: block !important;
+}
+@media only screen and (min-width: 40rem) {
+  .mtm-modal-overlay {
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 99998 !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    backface-visibility: hidden !important;
+    transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1) !important;
+    -webkit-transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1) !important;
+    transition-delay: 0.3s !important;
+  }
+  .mtm-modal-overlay.active {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+.mtm-modal-overlay .mtm-modal-popup {
+  align-items: start !important;
+  justify-content: center !important;
+  position: relative !important;
+  margin: 0 !important;
+  background-color: #fff !important;
+  width: 100% !important;
+  max-width: 750px !important;
+  min-height: 200px !important;
+  max-height: 98% !important;
+  padding: 10px !important;
+  border-radius: 3px !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  backface-visibility: hidden !important;
+  transform: scale(1.2) !important;
+  transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1) !important;
+  z-index: 99999 !important;
+  /**
+     * Mobile styling for popups
+     */
+}
+.mtm-modal-overlay .mtm-modal-popup > header {
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid #dedede;
+  margin: 0;
+  padding: 10px 0 7px 15px;
+}
+.mtm-modal-overlay .mtm-modal-popup > header .mtm-modal-title {
+  font-size: 24px !important;
+  line-height: 1.3 !important;
+  padding: 0 32px 0 0 !important;
+  margin: 0 !important;
+}
+.mtm-modal-overlay .mtm-modal-popup > header .mtm-modal-title a {
+  color: var(--text-color-normal) !important;
+}
+.mtm-modal-overlay .mtm-modal-popup > header .mtm-modal-title a:hover {
+  text-decoration: underline;
+}
+.mtm-modal-overlay .mtm-modal-popup .mtm-close-modal {
+  position: absolute !important;
+  cursor: pointer !important;
+  top: 15px !important;
+  right: 15px !important;
+  opacity: 0 !important;
+  backface-visibility: hidden !important;
+  transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1) !important;
+  -webkit-transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1) !important;
+  transition-delay: 0.3s !important;
+}
+.mtm-modal-overlay .mtm-modal-popup svg {
+  width: 17.5px !important;
+  height: 17.5px !important;
+}
+.mtm-modal-overlay .mtm-modal-popup .mtm-modal-content {
+  opacity: 0 !important;
+  backface-visibility: hidden !important;
+  transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1) !important;
+  transition-delay: 0.3s !important;
+  width: 100% !important;
+  margin: 20px 5px 5px !important;
+}
+.mtm-modal-overlay .mtm-modal-popup .mtm-modal-content .mtm-form .mtm-title {
+  display: block !important;
+}
+.mtm-modal-overlay .mtm-modal-popup .mtm-modal-content form {
+  margin-bottom: 0 !important;
+}
+.mtm-modal-overlay .mtm-modal-popup.active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+.mtm-modal-overlay .mtm-modal-popup.active .mtm-modal-content,
+.mtm-modal-overlay .mtm-modal-popup.active .mtm-close-modal {
+  opacity: 1 !important;
+}
+.mtm-modal-overlay .mtm-modal-popup > footer {
+  width: 100% !important;
+  border-top: 1px solid #dedede !important;
+}
+.mtm-modal-overlay .mtm-modal-popup > footer > div {
+  padding: 10px 25px !important;
+}
+.mtm-modal-overlay .mtm-modal-popup > footer > div button,
+.mtm-modal-overlay .mtm-modal-popup > footer > div .button {
+  margin: 0 !important;
+}
+@media only screen and (max-width: 39.99rem) {
+  .mtm-modal-overlay .mtm-modal-popup {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 0 !important;
+    transform: scale(1.1) !important;
+    padding: 10px !important;
+  }
+  .mtm-modal-overlay .mtm-modal-popup .mtm-close-modal {
+    top: 0 !important;
+    right: 10px !important;
+  }
+  .mtm-modal-overlay .mtm-modal-popup .mtm-close-modal svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+.mtm-admin-modal {
+  --font-size: 15px;
+  --line-height: 20px;
+}
+.mtm-admin-modal .mtm-modal-content p {
+  font-size: var(--font-size) !important;
+  line-height: var(--line-height) !important;
+  text-align: justify;
+}
+.mtm-admin-modal .mtm-modal-content.has-image {
+  display: grid;
+  grid-template-columns: auto minmax(80px, 150px);
+  grid-gap: 40px;
+}
+.mtm-admin-modal .mtm-modal-content.has-image > div.image {
+  text-align: center;
+}
+.mtm-admin-modal .mtm-modal-content.has-image > div.image img {
+  width: 100%;
+}
 /*# sourceMappingURL=meta-tag-manager.css.map */

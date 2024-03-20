@@ -34,5 +34,27 @@ if( defined('MTM_VERSION') ){
 		}
 	}
 	
+	if( version_compare( MTM_VERSION, '3.1', '<' ) ){
+		if( empty($mtm_custom['admin_notices']) ) $mtm_custom['admin_notices'] = array();
+		$admin_notice = sprintf(esc_html__('Hello, testing, see the %s!', 'meta-tag-manager'), '<a href="'.admin_url('options-general.php?page=meta-tag-manager').'">'. esc_html__('Settings Page', 'meta-tag-manager') .'</a>');
+		$Admin_Notice = new \Meta_Tag_Manager\Admin_Notice('update', 'info', $admin_notice, 'all');
+		\Meta_Tag_Manager\Admin_Notices::add( $Admin_Notice );
+	}
+	
+	// reviews
+	$data = is_multisite() ? get_site_option('mtm_admin_notices') : get_option('mtm_admin_notices');
+	if( empty($mtm_version) || !isset($data['admin-modals']) ){ // if admin-modals isn't set, it was never added before
+		if( empty($data['admin-modals']) ) $data['admin-modals'] = array();
+		if( !is_array($data['admin-modals']) ) $data['admin-modals'] = array();
+		$data['admin-modals']['review-nudge'] = empty($mtm_version) ? time() + (DAY_IN_SECONDS * 14) : time() + (DAY_IN_SECONDS * 7);
+		update_site_option('mtm_admin_notices', $data);
+	}
+	// temp promo
+	if( time() < 1711962000 &&  version_compare($mtm_version, '3.1', '<')  ) {
+		if( empty($data['admin-modals']) ) $data['admin-modals'] = array();
+		$data['admin-modals']['promo-popup'] = true;
+		update_site_option('mtm_admin_notices', $data);
+	}
+	
 	update_option('mtm_version', MTM_VERSION);
 }

@@ -171,4 +171,49 @@ jQuery(document).ready( function($) {
 	    maxItems: 100,
 	    closeAfterSelect: false
 	}).on('click', function(){ this.selectize.open(); });
+
+
+	// Modal Open/Close
+	let openModal = function( modal, onOpen = null ){
+		modal = jQuery(modal);
+		modal.appendTo(document.body);
+		setTimeout( function(){
+			modal.addClass('active').find('.mtm-modal-popup').addClass('active');
+			jQuery(document).triggerHandler('mtm_modal_open', [modal]);
+			if( typeof onOpen === 'function' ){
+				setTimeout( onOpen, 200); // timeout allows css transition
+			}
+		}, 100); // timeout allows css transition
+	};
+	let closeModal = function( modal, onClose = null ){
+		modal = jQuery(modal);
+		modal.removeClass('active').find('.mtm-modal-popup').removeClass('active');
+		setTimeout( function(){
+			if( modal.attr('data-parent') ){
+				let wrapper = jQuery('#' + modal.attr('data-parent') );
+				if( wrapper.length ) {
+					modal.appendTo(wrapper);
+				}
+			}
+			modal.triggerHandler('mtm_modal_close');
+			if( typeof onClose === 'function' ){
+				onClose();
+			}
+		}, 500); // timeout allows css transition
+	}
+	jQuery(document).on('click', '.mtm-modal .mtm-close-modal', function(e){
+		let modal = jQuery(this).closest('.mtm-modal');
+		if( !modal.attr('data-prevent-close') ) {
+			closeModal(modal);
+		}
+	});
+	jQuery(document).on('click', '.mtm-modal', function(e){
+		var target = jQuery(e.target);
+		if( target.hasClass('mtm-modal') ) {
+			let modal = jQuery(this);
+			if( !modal.attr('data-prevent-close') ){
+				closeModal(modal);
+			}
+		}
+	});
 });

@@ -4,12 +4,12 @@ Plugin Name: Meta Tag Manager
 Plugin URI: https://metatagmanager.com
 Description: A simple plugin to manage meta tags and other meta data that appear on aread of your site or individual posts. This can be used for verifiying google adding open graph tags, SEO meta and more.
 Author: Pixelite
-Version: 3.0.2
+Version: 3.1
 Author URI: https://pixelite.com/?utm_source=plugin-header&utm_medium=plugin&utm_campaign=plugin
 Text Domain: meta-tag-manager
 */
 /*
-Copyright (C) 2022 Marcus Sykes
+Copyright (C) 2024 Marcus Sykes
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 if( !defined('ABSPATH') ) exit;
 
 define('MTM_VERSION', '3.0.2');
+define('MTM_DIR_URL', trailingslashit(plugin_dir_url(__FILE__)));
 define('MTM_DIR', dirname( __FILE__ )); //an absolute path to this directory
 
 class Meta_Tag_Manager {
@@ -130,7 +131,10 @@ class Meta_Tag_Manager {
 	
 	public static function get_post_data( $post_id = false ){
 		if( empty($post_id) ) $post_id = get_the_ID();
-		$meta_tag_data = maybe_unserialize(get_post_meta($post_id, 'mtm_data', true));
+		$meta_tag_data = get_post_meta($post_id, 'mtm_data', true);
+		if ( is_serialized( $meta_tag_data ) ) { // Don't attempt to unserialize data that wasn't serialized going in.
+			$meta_tag_data = @unserialize( trim( $meta_tag_data ), array('allowed_classes' => array()) );
+		}
 		$meta_tags = array();
 		if( is_array($meta_tag_data) ){
 			foreach( $meta_tag_data as $tag_data ){

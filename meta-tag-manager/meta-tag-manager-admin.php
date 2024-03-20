@@ -22,8 +22,10 @@ class Meta_Tag_Manager_Admin {
 	/** loads the plugin */
 	public static function init() {
 	    global $pagenow, $MTM_Notices;
+		include_once('mtm-options.php');
 		include_once('admin/notices/admin-notices.php');
 		include_once('admin/notices/notices.php');
+		include_once('admin/admin-modals.php');
 		$MTM_Notices = new \Meta_Tag_Manager\Notices();
 		// add plugin page to admin menu
 		add_action ( 'admin_menu', array ( __CLASS__, 'menus' ) );
